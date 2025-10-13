@@ -1,0 +1,3 @@
+{id, endereço, nome, {entradas[0, 1, 2, 3]}, {saidas[0, 1, 2, 3]} }, 
+
+{id, 0[2], 1[3]}
