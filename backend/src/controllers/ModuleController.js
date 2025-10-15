@@ -73,7 +73,7 @@ export class ModuleController {
   // Gener comando
   static generateCommand(req, res) {
     try {
-      const { mode, position, value } = req.body;
+      const { mode, position, value, id } = req.body;
 
       if (!["pulse", "set"].includes(mode))
         return res.status(400).json({ error: "Modo inválido, use 'pulse' ou 'set'." });
@@ -83,6 +83,7 @@ export class ModuleController {
         return res.status(400).json({ error: "O valor deve ser 0 ou 1." });
 
       const command = {
+        id : "id",
         action: "relay",
         mode,
         position,
