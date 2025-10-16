@@ -1,6 +1,7 @@
 // src/controllers/moduleController.js
 import { Module } from "../models/Module.js";
 
+
 export class ModuleController {
   // Criar novo
   static async create(req, res) {
@@ -70,7 +71,7 @@ export class ModuleController {
     }
   }
 
-  // Gener comando
+  // Gerar comando
   static generateCommand(req, res) {
     try {
       const { mode, position, value, id } = req.body;

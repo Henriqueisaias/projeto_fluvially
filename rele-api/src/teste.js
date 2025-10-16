@@ -1,21 +1,23 @@
-import { connect } from 'nats';
+import dotenv from "dotenv";
+import { initNats } from "./nats/natsClient.js";
 
-async function sendTestCommand() {
-  const nc = await connect({ servers: "nats://localhost:4222" });
-  
-  const comando = {
-    id : "2",
+dotenv.config();
+
+async function main() {
+  const nc = await initNats();
+
+  const comandoTeste = {
     action: "relay",
     mode: "pulse",
-    position: 1,
-    value: 500
+    position: 3,
+    value: 2000
   };
 
-  nc.publish("command", JSON.stringify(comando));
-  console.log("✅ Comando publicado no NATS");
+  console.log("📝 Publicando comando no NATS...");
+  await nc.publish("command", JSON.stringify(comandoTeste));
 
-  await nc.flush();
-  await nc.close();
+  console.log("✅ Comando publicado!");
+  process.exit(0);
 }
 
-sendTestCommand();
+main();
